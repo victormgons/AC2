@@ -16,7 +16,15 @@ def delectContact():
     agenda_secundaria.writelines(agenda)
     agenda_secundaria.close()
     listConacts()
- 
+
+def findContact():
+    nome_arquivo = csv.reader(open('contactsList.csv', 'r'))
+    nome = input("Digite o nome procurado: ")
+    for rows in nome_arquivo:
+        if rows[0] == nome:
+                print("Contato buscado: ",rows)
+    showOptions()
+
 def addContact():
     print("Adicionar um registro")
     agenda = open("contactsList.csv",'a')
@@ -55,8 +63,7 @@ def showOptions():
     elif opcao == 2:
         listConacts()
     elif opcao == 3:
-        #findContact()
-        print("Função não terminada!")
+        findContact()
     elif opcao == 4:
         deleteContact()
     elif opcao == 5:
