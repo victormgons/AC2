@@ -5,6 +5,17 @@
 
 import sys
 import csv
+
+def delectContact():
+    agenda = [line for line in open("contactsList.csv")]
+    nome = input("Digite o nome do contato a ser deletado: ").lower().capitalize()
+    for item in agenda:
+        if nome in item:
+            agenda.remove(item)
+    agenda_secundaria = open("contactsList.csv", 'w')
+    agenda_secundaria.writelines(agenda)
+    agenda_secundaria.close()
+    listConacts()
  
 def addContact():
     print("Adicionar um registro")
@@ -47,8 +58,7 @@ def showOptions():
         #findContact()
         print("Função não terminada!")
     elif opcao == 4:
-        #deleteContact()
-        print("Função não terminada!")
+        deleteContact()
     elif opcao == 5:
         sys.exit()
     else:
